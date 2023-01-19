@@ -1,9 +1,17 @@
 import { Box, Flex, Heading, Image, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
+import Carousel1 from "../Components/Carousels/Carousel1";
+import Carousel2 from "../Components/Carousels/Carousel2";
+import Carousel3 from "../Components/Carousels/Carousel3";
 
 const Home = () => {
   return (
     <Box mb="20px" backgroundColor="white" padding="20px">
+      {/* Carousels Section */}
+      <Carousel1 />
+      <Carousel2 />
+      <Carousel3 />
+
       {/* Grocery and Home furnishing section */}
       <Box width="97%" margin="auto" mb="20px" mt="30px">
         <Heading mb="10px">Grocery & Home Furnishing</Heading>

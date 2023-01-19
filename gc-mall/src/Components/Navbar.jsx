@@ -20,8 +20,10 @@ const Navbar = () => {
       w="100%"
       bgColor="white"
       alignItems="center"
-      mb="10px"
+      mb="100px"
       position="fixed"
+      overflow="hidden"
+      top="0"
     >
       <Spacer />
       <NavLink to="/">
@@ -37,6 +39,8 @@ const Navbar = () => {
       <Button color="white" backgroundColor="rgb(241,90,34)">
         <SearchIcon />
       </Button>
+      <Spacer />
+      <NavLink to="/products">Products</NavLink>
       <Spacer />
       <HStack color="rgb(241,90,34)">
         <TfiNotepad />
