@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { Button, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 
 const getData = () => {
-  return axios.get(`http://localhost:3000/products`);
+  return axios.get(`http://localhost:3000/men`);
 };
-const Products = () => {
+const MenPage = () => {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(false);
   const [data, setData] = useState([]);
@@ -21,7 +20,6 @@ const Products = () => {
       .catch((err) => setErr(true))
       .finally(() => setLoading(false));
   }, []);
-  console.log(data);
 
   return loading ? (
     <Heading mt="100px">Loading...</Heading>
@@ -49,13 +47,17 @@ const Products = () => {
           <Heading size="sm">{item.brand}</Heading>
           <Heading size="xs">{item.title}</Heading>
           <Text>Price: Rs.{item.price}</Text>
-          <NavLink to={`/products/${item.id}`}>
-            <Text color="rgb(241,90,34)">More Info</Text>
-          </NavLink>
+          <Button
+            bgColor="rgb(241,90,34)"
+            _hover={{ bgColor: "rgb(221,70,14)" }}
+            color="white"
+          >
+            Add to Cart
+          </Button>
         </GridItem>
       ))}
     </Grid>
   );
 };
 
-export default Products;
+export default MenPage;

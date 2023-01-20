@@ -24,6 +24,7 @@ const Navbar = () => {
       position="fixed"
       overflow="hidden"
       top="0"
+      zIndex={"999"}
     >
       <Spacer />
       <NavLink to="/">
