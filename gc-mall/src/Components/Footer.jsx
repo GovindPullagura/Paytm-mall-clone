@@ -13,6 +13,7 @@ import { BsShieldCheck } from "react-icons/bs";
 import { GiAlliedStar } from "react-icons/gi";
 import { BsBagCheck } from "react-icons/bs";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -155,12 +156,16 @@ const Footer = () => {
         <Flex mt="20px">
           <VStack align="flex-start">
             <Text>Electronics</Text>
-            <Text>Mens's Fashion</Text>
+            <NavLink to="/men">
+              <Text>Mens's Fashion</Text>
+            </NavLink>
             <Text>Stationery</Text>
           </VStack>
           <Spacer />
           <VStack align="flex-start">
-            <Text>Mobiles</Text>
+            <NavLink to="/mobiles">
+              <Text>Mobiles</Text>
+            </NavLink>
             <Text>Home and Kotchen</Text>
             <Text>Travel Cards</Text>
           </VStack>
@@ -176,7 +181,9 @@ const Footer = () => {
           </VStack>
           <Spacer />
           <VStack align="flex-start">
-            <Text>Women's Fashion</Text>
+            <NavLink to="/women">
+              <Text>Women's Fashion</Text>
+            </NavLink>
             <Text>Sports & Fitness</Text>
           </VStack>
           <Spacer />
