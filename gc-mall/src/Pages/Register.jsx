@@ -11,21 +11,41 @@ import {
   Button,
   Heading,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
+import axios from "axios";
+import { AuthContext } from "../Context/AuthContext";
 
 export default function Register() {
+  const { login, isAuth } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const handleUser = () => {
+    return axios.post(`http://localhost:3000/users`, user).then((res) => {
+      console.log(res.data);
+      alert("Signed Up Successfully.");
+      login();
+    });
+  };
+
+  if (isAuth) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <Flex
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
+      bgColor={"gray.100"}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -36,35 +56,52 @@ export default function Register() {
             to enjoy all of our cool features ✌️
           </Text> */}
         </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-        >
+        <Box rounded={"lg"} bgColor={"white"} boxShadow={"lg"} p={8}>
           <Stack spacing={4}>
             <HStack>
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input type="text" />
+                  <Input
+                    value={user.firstName}
+                    onChange={(e) =>
+                      setUser({ ...user, firstName: e.target.value })
+                    }
+                    type="text"
+                  />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="lastName">
                   <FormLabel>Last Name</FormLabel>
-                  <Input type="text" />
+                  <Input
+                    type="text"
+                    value={user.lastName}
+                    onChange={(e) =>
+                      setUser({ ...user, lastName: e.target.value })
+                    }
+                  />
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input
+                type="email"
+                value={user.email}
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+              />
             </FormControl>
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input type={showPassword ? "text" : "password"} />
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  value={user.password}
+                  onChange={(e) =>
+                    setUser({ ...user, password: e.target.value })
+                  }
+                />
                 <InputRightElement h={"full"}>
                   <Button
                     variant={"ghost"}
@@ -86,6 +123,7 @@ export default function Register() {
                 _hover={{
                   bg: "rgb(221,70,14)",
                 }}
+                onClick={handleUser}
               >
                 Sign up
               </Button>

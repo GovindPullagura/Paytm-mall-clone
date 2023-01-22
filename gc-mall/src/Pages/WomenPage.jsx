@@ -3,7 +3,7 @@ import axios from "axios";
 import { Button, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 
 const getData = () => {
-  return axios.get(`http://localhost:3000/women`);
+  return axios.get(`https://gc-mall.onrender.com/women`);
 };
 const WomenPage = () => {
   const [loading, setLoading] = useState(false);
@@ -20,6 +20,9 @@ const WomenPage = () => {
       .catch((err) => setErr(true))
       .finally(() => setLoading(false));
   }, []);
+  const handleAdd = (product) => {
+    axios.post(`https://gc-mall.onrender.com/cart`, product);
+  };
 
   return loading ? (
     <Heading mt="100px">Loading...</Heading>
@@ -51,6 +54,7 @@ const WomenPage = () => {
             bgColor="rgb(241,90,34)"
             _hover={{ bgColor: "rgb(221,70,14)" }}
             color="white"
+            onClick={() => handleAdd(item)}
           >
             Add to Cart
           </Button>
