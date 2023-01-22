@@ -11,13 +11,11 @@ import {
   Button,
   Heading,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Navigate, NavLink } from "react-router-dom";
 import axios from "axios";
-import Login from "./Login";
 import { AuthContext } from "../Context/AuthContext";
 
 export default function Register() {

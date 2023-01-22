@@ -4,7 +4,7 @@ import { Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
 const getData = () => {
-  return axios.get(`http://localhost:3000/products`);
+  return axios.get(`https://gc-mall.onrender.com/products`);
 };
 const Products = () => {
   const [loading, setLoading] = useState(false);

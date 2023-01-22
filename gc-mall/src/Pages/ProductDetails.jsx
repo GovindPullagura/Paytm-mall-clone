@@ -26,7 +26,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const getData = (id) => {
-  return axios.get(`http://localhost:3000/products/${id}`);
+  return axios.get(`https://gc-mall.onrender.com/products/${id}`);
 };
 const ProductDetails = () => {
   const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ const ProductDetails = () => {
   }, []);
 
   const handleAdd = (data) => {
-    axios.post(`http://localhost:3000/cart`, data);
+    axios.post(`https://gc-mall.onrender.com/cart`, data);
   };
 
   return loading ? (

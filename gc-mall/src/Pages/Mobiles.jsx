@@ -3,7 +3,7 @@ import axios from "axios";
 import { Button, Grid, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 
 const getData = () => {
-  return axios.get(`http://localhost:3000/mobiles`);
+  return axios.get(`https://gc-mall.onrender.com/mobiles`);
 };
 const Mobiles = () => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const Mobiles = () => {
       .finally(() => setLoading(false));
   }, []);
   const handleAdd = (product) => {
-    axios.post(`http://localhost:3000/cart`, product);
+    axios.post(`https://gc-mall.onrender.com/cart`, product);
   };
 
   return loading ? (
