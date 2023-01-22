@@ -23,14 +23,21 @@ export default function Login() {
 
   const handleSubmit = () => {
     let loginDetails = { email, password };
-    // if (email === "" || password === "") {
-    //   alert("Fill all the details");
-    // } else {
-    axios
-      .post(`https://gc-mall.onrender.com/users`, loginDetails)
-      .then((res) => console.log(res));
-    // }
+    if (email === "" || password === "") {
+      alert("Fill all the details");
+    } else {
+      return axios
+        .post(`https://gc-mall.onrender.com/users`, loginDetails)
+        .then((res) => {
+          console.log(res);
+          login();
+        });
+    }
   };
+
+  if (isAuth) {
+    return <Navigate to="/cart" />;
+  }
 
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"} bg={"gray.150"}>

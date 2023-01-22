@@ -20,6 +20,9 @@ const Mobiles = () => {
       .catch((err) => setErr(true))
       .finally(() => setLoading(false));
   }, []);
+  const handleAdd = (product) => {
+    axios.post(`http://localhost:3000/cart`, product);
+  };
 
   return loading ? (
     <Heading mt="100px">Loading...</Heading>
@@ -51,6 +54,7 @@ const Mobiles = () => {
             bgColor="rgb(241,90,34)"
             _hover={{ bgColor: "rgb(221,70,14)" }}
             color="white"
+            onClick={() => handleAdd(item)}
           >
             Add to Cart
           </Button>

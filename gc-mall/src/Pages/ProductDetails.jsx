@@ -19,6 +19,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Tbody,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -44,6 +45,10 @@ const ProductDetails = () => {
       .catch((err) => setErr(true))
       .finally(() => setLoading(false));
   }, []);
+
+  const handleAdd = (data) => {
+    axios.post(`http://localhost:3000/cart`, data);
+  };
 
   return loading ? (
     <Heading mt="50px">Loading...</Heading>
@@ -72,6 +77,7 @@ const ProductDetails = () => {
               color={"white"}
               bgColor={"rgb(239,78,40)"}
               _hover={{ bgColor: "rgb(229,68,20)" }}
+              onClick={() => handleAdd(item)}
             >
               Add to Cart
             </Button>
@@ -96,45 +102,49 @@ const ProductDetails = () => {
             </Text>
             <Text>Customer Care: 01204606060</Text>
             <Table>
-              <Tr>
-                <Td>Occasion</Td>
-                <Td color={"gray"}>Casual</Td>
-              </Tr>
-              <Tr>
-                <Td>Length</Td>
-                <Td color={"gray"}>Regular</Td>
-              </Tr>
-              <Tr>
-                <Td>Set Contents</Td>
-                <Td color={"gray"}>Pack of 1</Td>
-              </Tr>
-              <Tr>
-                <Td>Wash care</Td>
-                <Td color={"gray"}>Hand Wash/Machine Wash</Td>
-              </Tr>
-              <Tr>
-                <Td>Disclaimer</Td>
-                <Td color={"gray"}>
-                  Product color may slightly vary due to photographic lighting
-                  sources or your monitor settings.
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Style Code</Td>
-                <Td color={"gray"}>EHTS1250</Td>
-              </Tr>
-              <Tr>
-                <Td>Ean Upc</Td>
-                <Td color={"gray"}>8907797284434</Td>
-              </Tr>
+              <Tbody>
+                <Tr>
+                  <Td>Occasion</Td>
+                  <Td color={"gray"}>Casual</Td>
+                </Tr>
+                <Tr>
+                  <Td>Length</Td>
+                  <Td color={"gray"}>Regular</Td>
+                </Tr>
+                <Tr>
+                  <Td>Set Contents</Td>
+                  <Td color={"gray"}>Pack of 1</Td>
+                </Tr>
+                <Tr>
+                  <Td>Wash care</Td>
+                  <Td color={"gray"}>Hand Wash/Machine Wash</Td>
+                </Tr>
+                <Tr>
+                  <Td>Disclaimer</Td>
+                  <Td color={"gray"}>
+                    Product color may slightly vary due to photographic lighting
+                    sources or your monitor settings.
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>Style Code</Td>
+                  <Td color={"gray"}>EHTS1250</Td>
+                </Tr>
+                <Tr>
+                  <Td>Ean Upc</Td>
+                  <Td color={"gray"}>8907797284434</Td>
+                </Tr>
+              </Tbody>
             </Table>
           </TabPanel>
           <TabPanel>
             <Table>
-              <Tr>
-                <Td>Country of Origin</Td>
-                <Td color={"gray"}>INDIA</Td>
-              </Tr>
+              <Tbody>
+                <Tr>
+                  <Td>Country of Origin</Td>
+                  <Td color={"gray"}>INDIA</Td>
+                </Tr>
+              </Tbody>
             </Table>
             <Accordion allowMultiple>
               <AccordionItem>
@@ -148,17 +158,19 @@ const ProductDetails = () => {
                 </h2>
                 <AccordionPanel pb={4}>
                   <Table>
-                    <Tr>
-                      <Td>Manufactured By</Td>
-                      <Td color={"gray"}>ARVIND LIFESTYLE BRANDS LIMITED</Td>
-                    </Tr>
-                    <Tr>
-                      <Td>Manufacturer's Address</Td>
-                      <Td color={"gray"}>
-                        ARVIND LIFESTYLE BRANDS LIMITED, DU PARC TRINITY, 8TH
-                        FLOOR, 17, MG ROAD, Bangalore, Karnataka - 560001
-                      </Td>
-                    </Tr>
+                    <Tbody>
+                      <Tr>
+                        <Td>Manufactured By</Td>
+                        <Td color={"gray"}>ARVIND LIFESTYLE BRANDS LIMITED</Td>
+                      </Tr>
+                      <Tr>
+                        <Td>Manufacturer's Address</Td>
+                        <Td color={"gray"}>
+                          ARVIND LIFESTYLE BRANDS LIMITED, DU PARC TRINITY, 8TH
+                          FLOOR, 17, MG ROAD, Bangalore, Karnataka - 560001
+                        </Td>
+                      </Tr>
+                    </Tbody>
                   </Table>
                 </AccordionPanel>
               </AccordionItem>
@@ -177,14 +189,16 @@ const ProductDetails = () => {
                 </h2>
                 <AccordionPanel pb={4}>
                   <Table>
-                    <Tr>
-                      <Td>Return Policy</Td>
-                      <Td color={"gray"}>
-                        14 Days Free Return - Seller provides free
-                        exchange/refund within 14 days of delivery. Cancellation
-                        Allowed.
-                      </Td>
-                    </Tr>
+                    <Tbody>
+                      <Tr>
+                        <Td>Return Policy</Td>
+                        <Td color={"gray"}>
+                          14 Days Free Return - Seller provides free
+                          exchange/refund within 14 days of delivery.
+                          Cancellation Allowed.
+                        </Td>
+                      </Tr>
+                    </Tbody>
                   </Table>
                 </AccordionPanel>
               </AccordionItem>

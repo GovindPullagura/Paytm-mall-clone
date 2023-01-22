@@ -11,6 +11,7 @@ import Register from "../Pages/Register";
 import WomenPage from "../Pages/WomenPage";
 import ProductDetails from "../Pages/ProductDetails";
 import PrivateRoute from "./PrivateRoute";
+import Admin from "../Pages/Admin";
 
 const AllRoutes = () => {
   return (
@@ -31,6 +32,7 @@ const AllRoutes = () => {
       <Route path="/men" element={<MenPage />} />
       <Route path="/women" element={<WomenPage />} />
       <Route path="/mobiles" element={<Mobiles />} />
+      <Route path="/admin" element={<Admin />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

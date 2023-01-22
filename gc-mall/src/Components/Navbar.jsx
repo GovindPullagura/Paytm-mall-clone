@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Image,
   Flex,
@@ -13,8 +13,11 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { BiCool } from "react-icons/bi";
 import { TfiNotepad } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
+  const { isAuth, logout } = useContext(AuthContext);
+
   return (
     <Flex
       w="100%"
@@ -55,12 +58,25 @@ const Navbar = () => {
         </HStack>
       </NavLink>
       <Spacer />
-      <NavLink to="/login">
-        <HStack color="rgb(241,90,34)">
-          <BiCool />
-          <Text color="black">Login</Text>
-        </HStack>
-      </NavLink>
+      {isAuth ? (
+        <Button
+          bgColor={"rgb(241,90,34)"}
+          color="white"
+          _hover={{ bgColor: "rgb(221,70,14)" }}
+          onClick={() => logout()}
+        >
+          Logout
+        </Button>
+      ) : (
+        <NavLink to="/login">
+          <HStack color="rgb(241,90,34)">
+            <BiCool />
+            <Text color="black">Login</Text>
+          </HStack>
+        </NavLink>
+      )}
+      <Spacer />
+      <NavLink to="/admin">Admin</NavLink>
       <Spacer />
     </Flex>
   );
